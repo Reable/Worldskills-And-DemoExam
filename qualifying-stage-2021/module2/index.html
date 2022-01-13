@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ежедневник</title>
+    <link rel="stylesheet" href="src/style/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="flex-sb">
+                <div class="create-task">
+                    <h2>Приложение задачник</h2>
+                    <button id="openFormCreate">Добавить задачу</button>
+                </div>
+                <div class="right-header">
+                    <div class="search">
+                        <input type="text" placeholder="Поиск">
+                    </div>
+                    <div class="navigation">
+                        <p>Активные</p> |
+                        <p>Завершенные</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="main">
+        <div class="container">
+            <div id="app">
+
+            </div>
+        </div>
+    </div>
+    <script src="src/script/renderAllTasks.js"></script>
+    <script src="src/script/renderListCreateTasks.js"></script>
+    <script src="src/script/app.js"></script>
+</body>
+</html>
