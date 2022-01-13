@@ -1,0 +1,133 @@
+<script>
+    out_booking()
+    function out_booking(){
+        xhr.open('get','http://api.wsr.ru/api/booking/'+code,true)
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState !== 4) return
+            data = JSON.parse(xhr.responseText)
+            passengers = data.data.passengers
+            out_flights(data.data.flights)
+            out_passengers(data.data.passengers)
+            $('#cost').html(data.data.cost)
+            $('#code').html(data.data.code)
+        }
+        xhr.send()
+    }
+    <!--  Функция вывода всех полетов  -->
+    function out_flights(data){
+        out = ``
+        data.forEach(elem =>{
+            out += `
+                <tr>
+                    <td class="test-6-fc">${elem.flight_code}</td>
+                    <td class="test-6-ac">Bombardier CRJ200</td>
+                    <td class="test-6-from">${elem.from.city}</td>
+                    <td>
+                        <span class="test-6-dd">${elem.from.date}</span>
+                        at
+                        <span class="test-6-dt">${elem.from.time}</span>
+                    </td>
+                    <td class="test-6-to">${elem.to.city}</td>
+                    <td class="test-6-at">${elem.to.time}</td>
+                    <td class="test-6-ft">
+                        <span class="test-6-fhour">1</span>h
+                        <span class="test-6-fminutes">30</span>min
+                    </td>
+                </tr>
+            `
+        })
+        $('tbody#flights').html(out)
+    }
+    <!--  Функция вывода всех пасажиров  -->
+    function out_passengers(data){
+        out = ``
+        data.forEach(elem =>{
+            out += `
+                <tr>
+                    <td class="test-6-name">${elem.first_name}</td>
+                    <td class="test-6-last">${elem.last_name}</td>
+                    <td class="test-6-dob">${elem.birth_date}</td>
+                    <td class="test-6-doc">${elem.document_number}</td>
+                    <td class="test-6-seat">${elem.place_from}</td>
+                </tr>
+            `
+        })
+        $('tbody#passengers').html(out)
+    }
+</script>
+
+<div class="container">
+    <section class="mt-5">
+        <div class="d-flex justify-content-between align-items-start">
+            <h2 class="mb-4">
+                Booking <span class="test-6-code" id="code">AFADS</span>
+            </h2>
+            <a onclick="goto_page('index.html')" class="btn btn-sm btn-secondary test-6-gohome">Home</a>
+        </div>
+
+        <p>Booking cost: <span class="test-6-tp" id="cost">16000</span></p>
+
+        <div class="d-flex justify-content-between align-items-baseline mt-5 mb-2">
+            <h4>Flight information</h4>
+        </div>
+
+        <table class="table table-hover table-bordered">
+            <tr>
+                <th>Flight</th>
+                <th>Aircraft</th>
+                <th>From where</th>
+                <th>Date and time of departure</th>
+                <th>To where</th>
+                <th>Arrival time</th>
+                <th>Flight time</th>
+            </tr>
+            <tbody id="flights">
+                <tr>
+                    <td class="test-6-fc">FC 2144</td>
+                    <td class="test-6-ac">Bombardier CRJ200</td>
+                    <td class="test-6-from">Moscow</td>
+                    <td>
+                        <span class="test-6-dd">10-09-2020</span>
+                        at
+                        <span class="test-6-dt">08:00</span>
+                    </td>
+                    <td class="test-6-to">Kazan</td>
+                    <td class="test-6-at">09:30</td>
+                    <td class="test-6-ft">
+                        <span class="test-6-fhour">1</span>h
+                        <span class="test-6-fminutes">30</span>min
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-between align-items-baseline mt-5 mb-4">
+            <h4>Passengers</h4>
+        </div>
+        <table class="table table-hover">
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Date of Birth</th>
+                <th>Document number</th>
+                <th>Seat</th>
+            </tr>
+            <tbody id="passengers">
+                <tr>
+                    <td class="test-6-name">John</td>
+                    <td class="test-6-last">Doe</td>
+                    <td class="test-6-dob">01-01-1990</td>
+                    <td class="test-6-doc">8484548413</td>
+                    <td class="test-6-seat">1B</td>
+                </tr>
+                <tr>
+                    <td class="test-6-name">Ivan</td>
+                    <td class="test-6-last">Ivanov</td>
+                    <td class="test-6-dob">24-10-2001</td>
+                    <td class="test-6-doc">6565752703</td>
+                    <td class="test-6-seat">2B</td>
+                </tr>
+            </tbody>
+        </table>
+        <a onclick="goto_page('seat.html')" class="btn btn-primary test-6-select">Select seats</a>
+    </section>
+</div>

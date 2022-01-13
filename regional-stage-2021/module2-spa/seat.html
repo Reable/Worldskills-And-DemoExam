@@ -1,0 +1,290 @@
+<script>
+    //  Функция вывода всех пассажиров
+    out_passengers()
+    function out_passengers(){
+        out = ``
+        passengers.forEach(elem =>{
+            out += `
+                <tr>
+                    <td class="test-90-name">${elem.first_name}</td>
+                    <td class="test-90-last">${elem.last_name}</td>
+                    <td>
+                        <span class="test-90-seat">${elem.place_from}</span>
+                        <button class="btn btn-secondary ml-3 test-90-bselect"
+                        onclick="select_seat('${elem.id}')">Select</button>
+                    </td>
+                </tr>
+            `
+        })
+        $('tbody#passengers').html(out)
+    }
+    //  Функция добавления в переменную данных которые ввел пассажир
+    function select_seat(id){
+        let choice = prompt('Выберите место')
+        if(choice){
+            let request = JSON.stringify({
+                'passenger':id,
+                'seat':choice,
+                'type':'from'
+            })
+            query_seat(request)
+        }
+    }
+    // Запрос на сервер для изменения места пассажира
+    function query_seat(request){
+        xhr.open('patch','http://api.wsr.ru/api/booking/'+code+'/seat',true)
+        xhr.setRequestHeader('Content-Type','application/json')
+        xhr.onreadystatechange = function (){
+            if(xhr.readyState !== 4) return
+            data = JSON.parse(xhr.responseText)
+            if(xhr.status === 422) return alert(data.error.message)
+            let object = passengers.find(elem => elem.id === data.data.id)
+            object.place_from = data.data.place_from
+            out_passengers()
+        }
+        xhr.send(request)
+        return false
+    }
+</script>
+
+<div class="container-fluid">
+    <div class="row vh-100">
+        <div class="col-12 col-md-4 d-flex justify-content-center align-items-center">
+
+            <div class="passengers">
+                <h2>Choose where the passengers will sit</h2>
+
+                <table class="table table-bordered">
+                    <tr>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Seat</th>
+                    </tr>
+                    <tbody id="passengers">
+                        <tr>
+                            <td class="test-90-name">John</td>
+                            <td class="test-90-last">Doe</td>
+                            <td>
+                                <span class="test-90-seat">1A</span>
+                                <button class="btn btn-secondary ml-3 test-90-bselect">Select</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="test-90-name">Ivan</td>
+                            <td class="test-90-last">Ivanov</td>
+                            <td>
+                                <span class="test-90-seat">1B</span>
+                                <button class="btn btn-secondary ml-3 test-90-bselect">Select</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <a onclick="goto_page('booking_management.html')" class="btn test-90-bback btn-secondary">Back</a>
+                <a onclick="goto_page('booking_management.html')" class="btn test-90-bconfirm btn-success">Confirm</a>
+            </div>
+
+        </div>
+        <div class="col-12 col-md-8 d-flex justify-content-center align-items-center">
+
+            <div class="scheme">
+                <!-- letters -->
+                <div class="d-flex mb-2">
+                    <div class="number"></div>
+                    <div class="d-flex mr-3">
+                        <div class="letter">A</div>
+                        <div class="letter">B</div>
+                    </div>
+                    <div class="d-flex ml-3">
+                        <div class="letter">C</div>
+                        <div class="letter">D</div>
+                    </div>
+                    <div class="number"></div>
+                </div>
+                <!-- / letters -->
+
+                <!-- row -->
+                <div class="d-flex mb-2">
+                    <div class="number">1</div>
+                    <div class="d-flex mr-3">
+                        <div class="seat test-100-1a seat-selected"></div>
+                        <div class="seat test-100-1b seat-selected"></div>
+                    </div>
+                    <div class="d-flex ml-3">
+                        <div class="seat test-100-1c"></div>
+                        <div class="seat test-100-1d"></div>
+                    </div>
+                    <div class="number">1</div>
+                </div>
+                <!-- / row -->
+
+                <!-- row -->
+                <div class="d-flex mb-2">
+                    <div class="number">2</div>
+                    <div class="d-flex mr-3">
+                        <div class="seat test-100-2a "></div>
+                        <div class="seat test-100-2b "></div>
+                    </div>
+                    <div class="d-flex ml-3">
+                        <div class="seat test-100-2c"></div>
+                        <div class="seat test-100-2d"></div>
+                    </div>
+                    <div class="number">2</div>
+                </div>
+                <!-- / row -->
+
+                <!-- row -->
+                <div class="d-flex mb-2">
+                    <div class="number">3</div>
+                    <div class="d-flex mr-3">
+                        <div class="seat test-100-3a "></div>
+                        <div class="seat test-100-3b "></div>
+                    </div>
+                    <div class="d-flex ml-3">
+                        <div class="seat test-100-3c"></div>
+                        <div class="seat test-100-3d"></div>
+                    </div>
+                    <div class="number">3</div>
+                </div>
+                <!-- / row -->
+
+                <!-- row -->
+                <div class="d-flex mb-2">
+                    <div class="number">4</div>
+                    <div class="d-flex mr-3">
+                        <div class="seat test-100-4a "></div>
+                        <div class="seat test-100-4b "></div>
+                    </div>
+                    <div class="d-flex ml-3">
+                        <div class="seat test-100-4c"></div>
+                        <div class="seat test-100-4d"></div>
+                    </div>
+                    <div class="number">4</div>
+                </div>
+                <!-- / row -->
+
+                <!-- row -->
+                <div class="d-flex mb-2">
+                    <div class="number">5</div>
+                    <div class="d-flex mr-3">
+                        <div class="seat test-100-5a "></div>
+                        <div class="seat test-100-5b "></div>
+                    </div>
+                    <div class="d-flex ml-3">
+                        <div class="seat test-100-5c"></div>
+                        <div class="seat test-100-5d"></div>
+                    </div>
+                    <div class="number">5</div>
+                </div>
+                <!-- / row -->
+
+                <!-- row -->
+                <div class="d-flex mb-2">
+                    <div class="number">6</div>
+                    <div class="d-flex mr-3">
+                        <div class="seat test-100-6a "></div>
+                        <div class="seat test-100-6b "></div>
+                    </div>
+                    <div class="d-flex ml-3">
+                        <div class="seat test-100-6c"></div>
+                        <div class="seat test-100-6d"></div>
+                    </div>
+                    <div class="number">6</div>
+                </div>
+                <!-- / row -->
+
+                <!-- row -->
+                <div class="d-flex mb-2">
+                    <div class="number">7</div>
+                    <div class="d-flex mr-3">
+                        <div class="seat test-100-7a "></div>
+                        <div class="seat test-100-7b "></div>
+                    </div>
+                    <div class="d-flex ml-3">
+                        <div class="seat test-100-7c"></div>
+                        <div class="seat test-100-7d"></div>
+                    </div>
+                    <div class="number">7</div>
+                </div>
+                <!-- / row -->
+
+                <!-- row -->
+                <div class="d-flex mb-2">
+                    <div class="number">8</div>
+                    <div class="d-flex mr-3">
+                        <div class="seat test-100-8a "></div>
+                        <div class="seat test-100-8b "></div>
+                    </div>
+                    <div class="d-flex ml-3">
+                        <div class="seat test-100-8c"></div>
+                        <div class="seat test-100-8d"></div>
+                    </div>
+                    <div class="number">8</div>
+                </div>
+                <!-- / row -->
+
+                <!-- row -->
+                <div class="d-flex mb-2">
+                    <div class="number">9</div>
+                    <div class="d-flex mr-3">
+                        <div class="seat test-100-9a "></div>
+                        <div class="seat test-100-9b "></div>
+                    </div>
+                    <div class="d-flex ml-3">
+                        <div class="seat test-100-9c"></div>
+                        <div class="seat test-100-9d"></div>
+                    </div>
+                    <div class="number">9</div>
+                </div>
+                <!-- / row -->
+
+                <!-- row -->
+                <div class="d-flex mb-2">
+                    <div class="number">10</div>
+                    <div class="d-flex mr-3">
+                        <div class="seat test-100-10a "></div>
+                        <div class="seat test-100-10b "></div>
+                    </div>
+                    <div class="d-flex ml-3">
+                        <div class="seat test-100-10c"></div>
+                        <div class="seat test-100-10d"></div>
+                    </div>
+                    <div class="number">10</div>
+                </div>
+                <!-- / row -->
+
+                <!-- row -->
+                <div class="d-flex mb-2">
+                    <div class="number">11</div>
+                    <div class="d-flex mr-3">
+                        <div class="seat test-100-11a "></div>
+                        <div class="seat test-100-11b "></div>
+                    </div>
+                    <div class="d-flex ml-3">
+                        <div class="seat test-100-11c"></div>
+                        <div class="seat test-100-11d"></div>
+                    </div>
+                    <div class="number">11</div>
+                </div>
+                <!-- / row -->
+
+                <!-- row -->
+                <div class="d-flex mb-2">
+                    <div class="number">12</div>
+                    <div class="d-flex mr-3">
+                        <div class="seat test-100-12a "></div>
+                        <div class="seat test-100-12b "></div>
+                    </div>
+                    <div class="d-flex ml-3">
+                        <div class="seat test-100-12c"></div>
+                        <div class="seat test-100-12d"></div>
+                    </div>
+                    <div class="number">12</div>
+                </div>
+                <!-- / row -->
+
+            </div>
+
+        </div>
+    </div>
+</div>

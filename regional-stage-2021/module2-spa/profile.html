@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <section class="mt-5">
+            <div class="d-flex justify-content-between align-items-start">
+                <h2 class="mb-4">
+                    Welcome,
+                    <span class="test-3-name">John</span>
+                    <span class="test-3-last">Doe</span>
+                </h2>
+                <a class="btn btn-sm btn-secondary test-3-logout" href="index.html">Logout</a>
+            </div>
+
+            <p>Completed <span class="test-3-numflights">10</span> flights</p>
+        </section>
+
+        <section class="mt-5 favorites">
+            <h4 class="mb-4">Favorites flights</h4>
+
+            <table class="table table-hover">
+                <tr>
+                    <td>
+                        <span class="test-3-from">Kazan</span> -> <span class="test-3-to">Moscow</span>
+                        <br>
+                        <span class="test-3-from">Moscow</span> -> <span class="test-3-to">Kazan</span>
+                    </td>
+                    <td>
+                        Departure at
+                        <span class="test-3-t1">08:00</span>
+
+                        <br>
+
+                        Departure at
+                        <span class="test-3-t1">10:00</span>
+                    </td>
+                    <td>
+                        Arrival at <span class="test-3-t2">09:30</span>
+                        <br>
+                        Arrival at <span class="test-3-t2">11:30</span>
+                    </td>
+                    <td>
+                        <a href="booking_again_example.html" class="btn btn-sm btn-primary test-3-booknow">Book now</a>
+                        <a href="#" class="btn btn-sm btn-danger test-3-removf">Remove from favorites</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="test-3-from">Moscow</span> -> <span class="test-3-to">Kazan</span>
+                        <br>
+                        <span class="test-3-from">Kazan</span> -> <span class="test-3-to">Moscow</span>
+                    </td>
+                    <td>
+                        Departure at
+                        <span class="test-3-t1">19:00</span>
+
+                        <br>
+
+                        Departure at
+                        <span class="test-3-t1">10:00</span>
+                    </td>
+                    <td>
+                        Arrival at <span class="test-3-t2">09:30</span>
+                        <br>
+                        Arrival at <span class="test-3-t2">11:30</span>
+                    </td>
+                    <td>
+                        <a href="booking_again_example.html" class="btn btn-sm btn-primary test-3-booknow">Book now</a>
+                        <a href="#" class="btn btn-sm btn-danger test-3-removf">Remove from favorites</a>
+                    </td>
+                </tr>
+            </table>
+
+        </section>
+
+        <section class="mt-5 past">
+            <h4 class="mb-4">Past reservations</h4>
+
+            <table class="table table-hover">
+                <tr>
+                    <td>
+                        <span class="test-3-from">Kazan</span> -> <span class="test-3-to">Moscow</span>
+                        <br>
+                        <span class="test-3-from">Moscow</span> -> <span class="test-3-to">Kazan</span>
+                    </td>
+                    <td>
+                        Departured
+                        <span class="test-3-d1">10-09-2020</span>
+                        at
+                        <span class="test-3-t1">08:00</span>
+
+                        <br>
+
+                        Departured
+                        <span class="test-3-d1">20-09-2020</span>
+                        at
+                        <span class="test-3-t1">10:00</span>
+                    </td>
+                    <td>
+                        Arrived at <span class="test-3-t2">09:30</span>
+                        <br>
+                        Arrived at <span class="test-3-t2">11:30</span>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-primary">Add to favorites</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="test-3-from">Moscow</span> -> <span class="test-3-to">Kazan</span>
+                        <br>
+                        <span class="test-3-from">Kazan</span> -> <span class="test-3-to">Moscow</span>
+                    </td>
+                    <td>
+                        Departured
+                        <span class="test-3-d1">20-09-2020</span>
+                        at
+                        <span class="test-3-t1">19:00</span>
+
+                        <br>
+
+                        Departured
+                        <span class="test-3-d1">20-09-2020</span>
+                        at
+                        <span class="test-3-t1">10:00</span>
+                    </td>
+                    <td>
+                        Arrived at <span class="test-3-t2">09:30</span>
+                        <br>
+                        Arrived at <span class="test-3-t2">11:30</span>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-primary test-3-add-to-favorites">Add to favorites</a>
+                    </td>
+                </tr>
+            </table>
+
+        </section>
+
+        <section class="mt-5 upcoming">
+            <h4 class="mb-4">Upcoming reservations</h4>
+
+            <table class="table table-hover">
+                <tr>
+                    <td>
+                        <a class="test-3-code" href="booking_management.html">AFADS</a>
+                    </td>
+                    <td>
+                        <span class="test-3-from">Kazan</span> -> <span class="test-3-to">Moscow</span>
+                        <br>
+                        <span class="test-3-from">Moscow</span> -> <span class="test-3-to">Kazan</span>
+                    </td>
+                    <td>
+                        Departure
+                        <span class="test-3-d1">10-09-2020</span>
+                        at
+                        <span class="test-3-t1">08:00</span>
+
+                        <br>
+
+                        Departure
+                        <span class="test-3-d1">20-09-2020</span>
+                        at
+                        <span class="test-3-t1">10:00</span>
+                    </td>
+                    <td>
+                        Arrival at <span class="test-3-t2">09:30</span>
+                        <br>
+                        Arrival at <span class="test-3-t2">11:30</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a class="test-3-code" href="booking_management.html">IFAAV</a>
+                    </td>
+                    <td>
+                        <span class="test-3-from">Moscow</span> -> <span class="test-3-to">Kazan</span>
+                        <br>
+                        <span class="test-3-from">Kazan</span> -> <span class="test-3-to">Moscow</span>
+                    </td>
+                    <td>
+                        Departure
+                        <span class="test-3-d1">20-09-2020</span>
+                        at
+                        <span class="test-3-t1">19:00</span>
+
+                        <br>
+
+                        Departure
+                        <span class="test-3-d1">20-09-2020</span>
+                        at
+                        <span class="test-3-t1">10:00</span>
+                    </td>
+                    <td>
+                        Arrival at <span class="test-3-t2">09:30</span>
+                        <br>
+                        Arrival at <span class="test-3-t2">11:30</span>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+    </div>
+
+
+
+</body>
+
+</html>

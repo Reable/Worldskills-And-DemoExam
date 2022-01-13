@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Landing Page</title>
+</head>
+<body>
+<!--Шапка сайта где аспологается логотип и ссылки навигации-->
+<header class="dark">
+    <div class="content">
+        <div class="logo"><a href="index.html"><img src="images/logo.png" alt="logo"></a></div>
+        <div class="city">Ваш город: Воркута</div>
+        <nav>
+            <a href="#stocks">Акции</a> |
+            <a href="#search">Поиск</a> |
+            <a href="#">Покупка билета на сеанс</a> |
+            <a href="login.html">Личный кабинет</a>
+        </nav>
+    </div>
+</header>
+<!--Банер позволяет отобразить красивую картинку в верху главной страницы-->
+<div class="banner">
+    <!--Блок служит для притемнения картинку используя прозрачный черный цвет( все стиили в css )-->
+    <div class="mask"></div>
+    <div class="content">
+        <div class="center">
+            <h1>КиноУДома</h1>
+            <h2>Большое кино за маленькие деньги</h2>
+        </div>
+    </div>
+</div>
+<!--Блок описания и выбора скидки для похода в кино-->
+<div class="description dark">
+    <div class="content wrap">
+        <!--Блок показывающий что именнующий блок после себя)-->
+        <div class="head">Выберите себе бонус</div>
+        <br>
+        <div class="discounts">
+            <!--Скидка первая-->
+            <div class="discount">
+                <h1>5%</h1>
+                <p>от</p>
+                <p>500 рублей</p>
+            </div>
+            <!--Скидка вторая-->
+            <div class="discount">
+                <h1>10%</h1>
+                <p>от</p>
+                <p>1 000 рублей</p>
+            </div>
+            <!--Скидка третья-->
+            <div class="discount">
+                <h1>15%</h1>
+                <p>от</p>
+                <p>1 500 рублей</p>
+            </div>
+            <!--Скидка четвертая-->
+            <div class="discount">
+                <h1>20%</h1>
+                <p>от</p>
+                <p>2 000 рублей</p>
+            </div>
+            <!--Скидка пятая-->
+            <div class="discount">
+                <h1>25%</h1>
+                <p>от</p>
+                <p>2 500 рублей</p>
+            </div>
+            <!--Скидка шестая-->
+            <div class="discount">
+                <h1>30%</h1>
+                <p>от</p>
+                <p>3 000 рублей</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Юлок о доверии нашей компании содержит в себе отзывы посетителей-->
+<div class="confidence metal">
+    <div class="content wrap">
+        <div class="head">Отзывы наших покупателей</div>
+        <br>
+        <!--Отзыв посетителя-->
+        <div class="review">
+            <h2>Иван Размыслов</h2>
+            <p>В кино я ходил с друзьями и мне очень понравился зал, звук очень хороший а качество экранов 
+            на отличнойм уровне.</p>
+        </div>
+        <!--Отзыв посетителя-->
+        <div class="review">
+            <h2>Сергей Кошелев</h2>
+            <p>Посетить ваш кинотеатр я решил с моей семьей, нам все очень понравилось
+            персонал очень вежливый, а еда вкусная.</p>
+        </div>
+        <!--Отзыв посетителя-->
+        <div class="review">
+            <h2>Роман Коренев</h2>
+            <p>Здравствуйте, я сидя дома смог очень легко и понятно заказать себе билеты на сеанс,
+                понравилась то как работники относятся к своим
+            покупателям, буду приходить к вам более часто.</p>
+        </div>
+    </div>
+</div>
+<!--Блок где распологается форма для поиска нужного вам сеанса-->
+<div class="search dark" id="search">
+    <div class="content wrap">
+        <div class="head">Поиск сеанса</div>
+        <br>
+        <!--Форма поиска сеанса-->
+        <form action="">
+            <input type="text" required placeholder="Город(обязательно)">
+            <input type="text" placeholder="Название кинотеатра">
+            <input type="text" placeholder="Название фильма">
+            <input type="date" placeholder="Дата сеанса">
+            <select>
+                <option selected disabled>Выберите количество мест</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+            </select>
+            <a href="search.html"><input type="button" value="Поиск"></a>
+        </form>
+    </div>
+</div>
+<!--Секция где распологаются все акции у данной компании-->
+<div class="stocks" id="stocks">
+    <div class="content wrap">
+        <div class="head">Ознакомьтесь с нашими акциями</div>
+        <br>
+        <div class="promotions">
+            <!--Акция превая-->
+            <div class="promo">
+                <img src="images/1.jpg" alt="stocks">
+                <h3>Returning and Changing Your Tickets</h3>
+                <p>The pandemic has changed many travelers’ plans, but we know that it will not last forever.
+                    Once all of this is over, we will continue exploring this world the way we used to.
+                    Special rules that have been developed for this challenging situation will help you cancel your trip
+                    or postpone it until later.</p>
+                <input type="button" value="Подробнее">
+            </div>
+            <!--Акция вторая-->
+            <div class="promo">
+                <img src="images/2.jpg" alt="stocks">
+                <h3>Best offers</h3>
+                <p>To see again the streets that witnessed so much. To hug your beloved ones and look back to see
+                    what you’ve come through. And to think of new dreams that will be so special!</p>
+                <input type="button" value="Подробнее">
+            </div>
+            <!--Акция третья-->
+            <div class="promo">
+                <img src="images/3.jpg" alt="stocks">
+                <h3>See you more often</h3>
+                <p>Since the beginning of January, we have been expanding the geography of flights in Russia so that you can
+                    see your loved ones more often. Choose our company to fly to where you are always expected.</p>
+                <input type="button" value="Подробнее">
+            </div>
+            <!--Акция четвертая-->
+            <div class="promo">
+                <img src="images/4.jpg" alt="stocks">
+                <h3>Everything is on again</h3>
+                <p>From August 10, we will resume flights to Turkey. Flights from Moscow to Antalya will be operated twice
+                    a day daily, and flights on the Moscow-Dalaman route will be operated three to seven times a week.</p>
+                <input type="button" value="Подробнее">
+            </div>
+        </div>
+    </div>
+</div>
+<!--Секция где находиться форма для подписки на рассылку новостей компании-->
+<div class="subscribe metal">
+    <div class="content wrap">
+        <div class="head">Подпишитесь на наши новости</div>
+        <!--Форма для рассылки новостей-->
+        <form action="">
+            <input type="text" placeholder="Введите вашу почту">
+            <input type="button" value="Подписаться">
+        </form>
+    </div>
+</div>
+<!--Подвал сайта где находиться номер телефона для связью с тех.поддежкой
+    и ссылки на страницы которые могут понадобиться-->
+<footer class="dark">
+    <div class="content">
+        <h1>8 (800) 100-10-10</h1>
+        <nav>
+            <a href="http://yjsixrta-m1.wsr.ru">Главная</a>
+            <a href="http://yjsixrta-m1.wsr.ru/login">Вход</a>
+            <a href="http://yjsixrta-m1.wsr.ru/signup">Регистрация</a>
+            <a href="http://yjsixrta-m1.wsr.ru/contact">Контакты</a>
+            <a href="http://yjsixrta-m1.wsr.ru/news">Новости</a>
+            <a href="http://yjsixrta-m1.wsr.ru/feedback">Обратная связь</a>
+        </nav>
+    </div>
+</footer>
+</body>
+</html>

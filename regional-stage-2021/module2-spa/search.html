@@ -1,0 +1,155 @@
+<script>
+    out_flights(data.data.flights_to,'to')
+    out_flights(data.data.flights_back,'back')
+    // Функция вывода всех искомых полетов
+    function out_flights(data,type){
+        out = ``
+        data.forEach(elem =>{
+            $('div#'+type).html(`
+                <h5 class="mt-4 mb-3">
+                    <span class="test-4-fif1">${elem.from.city}</span>
+                    ->
+                    <span class="test-4-fit1">${elem.to.city}</span>
+                </h5>
+            `)
+            out += `
+                <tr onclick="select_seat('${elem.flight_code}','${type}',event)">
+                    <td class="test-4-fn">${elem.flight_code}</td>
+                    <td class="test-4-at">Bombardier CRJ200</td>
+                    <td>
+                        <span class="test-4-dd">${elem.from.date}</span>
+                        at
+                        <span class="test-4-dt">${elem.from.time}</span>
+                    </td>
+                    <td class="test-4-aatime">${elem.to.time}</td>
+                    <td class="test-4-ft">
+                        <span class="test-4-fhour">1</span>h
+                        <span class="test-4-fminutes">30</span>min
+                    </td>
+                    <td class="test-4-fp">${elem.cost}</td>
+                </tr>
+            `
+        })
+        $('tbody#'+type).html(out)
+    }
+    //Функция обработки выбранного места и добавление его в массив
+    function select_seat(code,type,e){
+        document.querySelectorAll('tbody#'+type+' tr').forEach(elem => elem.classList.remove('selected'))
+        document.querySelectorAll('tbody#'+type+' td').forEach(elem => elem.classList.remove('selected'))
+        flights[type] = data.data['flights_'+type].find(elem => elem.flight_code === code)
+        e.target.parentNode.classList.add('selected')
+    }
+
+
+</script>
+
+    <div class="container">
+        <section class="mt-5">
+            <div class="d-flex justify-content-between align-items-start">
+                <h2 class="mb-4">
+                    We found the following flights
+                </h2>
+                <a onclick="goto_page('index.html')" class="btn btn-sm btn-secondary test-4-bback">Back</a>
+            </div>
+            <div id="to">
+                <h5 class="mt-4 mb-3">
+                    <span class="test-4-fif1">Kazan</span>
+                    ->
+                    <span class="test-4-fit1">Moscow</span>
+                </h5>
+            </div>
+            <table class="table table-hover table-bordered">
+                <tr>
+                    <th>Flight</th>
+                    <th>Aircraft</th>
+                    <th>Date and time of departure</th>
+                    <th>Arrival time</th>
+                    <th>Flight time</th>
+                    <th>Cost</th>
+                </tr>
+                <tbody id="to">
+                    <tr class="selected">
+                        <td class="test-4-fn">FC 2144</td>
+                        <td class="test-4-at">Bombardier CRJ200</td>
+                        <td>
+                            <span class="test-4-dd">10-09-2020</span>
+                            at
+                            <span class="test-4-dt">08:00</span>
+                        </td>
+                        <td class="test-4-aatime">09:30</td>
+                        <td class="test-4-ft">
+                            <span class="test-4-fhour">1</span>h
+                            <span class="test-4-fminutes">30</span>min
+                        </td>
+                        <td class="test-4-fp">8000</td>
+                    </tr>
+                    <tr>
+                        <td class="test-4-fn">FC 2162</td>
+                        <td class="test-4-at">Bombardier CRJ200</td>
+                        <td>
+                            <span class="test-4-dd">10-09-2020</span>
+                            at
+                            <span class="test-4-dt">12:00</span>
+                        </td>
+                        <td class="test-4-aatime">13:30</td>
+                        <td class="test-4-ft">
+                            <span class="test-4-fhour">1</span>h
+                            <span class="test-4-fminutes">30</span>min
+                        </td>
+                        <td class="test-4-fp">8000</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="back">
+                <h5 class="mt-4 mb-3">
+                    <span class="test-4-fif2">Moscow</span>
+                    ->
+                    <span class="test-4-fit2">Kazan</span>
+                </h5>
+            </div>
+            <table class="table table-hover table-bordered">
+                <tr>
+                    <th>Flight</th>
+                    <th>Aircraft</th>
+                    <th>Date and time of departure</th>
+                    <th>Arrival time</th>
+                    <th>Flight time</th>
+                    <th>Cost</th>
+                </tr>
+                <tbody id="back">
+                    <tr>
+                        <td class="test-4-fn">FC 2143</td>
+                        <td class="test-4-at">Bombardier CRJ200</td>
+                        <td>
+                            <span class="test-4-dd">20-09-2020</span>
+                            at
+                            <span class="test-4-dt">06:00</span>
+                        </td>
+                        <td class="test-4-aatime">07:30</td>
+                        <td class="test-4-ft">
+                            <span class="test-4-fhour">1</span>h
+                            <span class="test-4-fminutes">30</span>min
+                        </td>
+                        <td class="test-4-fp">9000</td>
+                    </tr>
+                    <tr class="selected">
+                        <td class="test-4-fn">FC 2161</td>
+                        <td class="test-4-aatime">Bombardier CRJ200</td>
+                        <td>
+                            <span class="test-4-dd">20-09-2020</span>
+                            at
+                            <span class="test-4-dt">10:00</span>
+                        </td>
+                        <td class="test-4-at">11:30</td>
+                        <td class="test-4-ft">
+                            <span class="test-4-fhour">1</span>h
+                            <span class="test-4-fminutes">30</span>min
+                        </td>
+                        <td class="test-4-fp">9000</td>
+                    </tr>
+                </tbody>
+            </table>
+            <a onclick="goto_page('booking.html')" class="btn btn-primary test-4-bgobook mt-4">Go to booking</a>
+        </section>
+
+    </div>

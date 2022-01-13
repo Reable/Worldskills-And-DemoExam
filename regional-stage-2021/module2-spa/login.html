@@ -1,0 +1,52 @@
+<script>
+    // Функция авторизации пользователя
+    function login(){
+        let form = document.forms[0]
+        let request = JSON.stringify({
+            'phone':form.elements['phone'].value,
+            'password':form.elements['password'].value,
+        })
+        xhr.open('post','http://api.wsr.ru/api/login',true)
+        xhr.setRequestHeader('Content-Type','application/json')
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState !== 4) return
+            data = JSON.parse(xhr.responseText)
+            if(xhr.status === 422) return alert(data.error.message)
+            if(xhr.status === 200){
+                goto_page('profile.html')
+            }
+        }
+        xhr.send(request)
+        return false
+    }
+</script>
+
+<div class="container vh-100 d-flex align-items-center justify-content-center">
+
+    <section class="mt-5 w-75">
+        <h2 class="mb-5 text-center">Log in</h2>
+
+        <form onsubmit="return login()">
+            <div class="row">
+                <div class="col-12">
+                    <!-- is-invalid class show error message -->
+                    <input name="phone" type="text" class="form-control is-invalid test-1-fpn" placeholder="Phone">
+                    <div class="invalid-feedback test-1-emph">Error message</div>
+                </div>
+                <div class="col-12 mt-2">
+                    <input name="password" type="password" class="form-control test-1-fps" placeholder="Password">
+                    <div class="invalid-feedback test-1-emps">Error message</div>
+                </div>
+                <div class="col-12 mt-4">
+                    <button class="btn btn-primary w-100 test-1-fbs">Log in</button>
+                    <div class="text-center mt-2">
+                        Don't have an account yet? <a onclick="goto_page('register.html')" class="test-1-bsu">Sign up</a>
+                        or
+                        <a onclick="goto_page('index.html')" class="test-1-bbh">Back home</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+
+</div>
