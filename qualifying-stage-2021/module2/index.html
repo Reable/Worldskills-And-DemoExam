@@ -21,8 +21,8 @@
                         <input type="text" placeholder="Поиск">
                     </div>
                     <div class="navigation">
-                        <p>Активные</p> |
-                        <p>Завершенные</p>
+                        <p class="active">Активные</p> |
+                        <p class="completed">Завершенные</p>
                     </div>
                 </div>
             </div>
@@ -30,12 +30,20 @@
     </header>
     <div class="main">
         <div class="container">
+            <div class="data-week">
+                <h3 class="red">Позавчера</h3>
+                <h3 class="mini-red">Вчера</h3>
+                <h3 class="orange">Сегодня</h3>
+                <h3 class="yellow">Завтра</h3>
+                <h3 class="green">Послезавтра</h3>
+            </div>
+            <div id="date"></div>
             <div id="app">
 
             </div>
         </div>
     </div>
-    <script src="src/script/renderAllTasks.js"></script>
+    <script src="src/script/renderTasks.js"></script>
     <script src="src/script/renderListCreateTasks.js"></script>
     <script src="src/script/app.js"></script>
 </body>
