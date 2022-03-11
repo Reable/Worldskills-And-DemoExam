@@ -12,6 +12,12 @@ input[type=checkbox]{
     width: 20px;
     background-color: green;
 }
+input[type=button]{
+    padding: 5px 10px;
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+}
 .red{
     background-color: red;
 }

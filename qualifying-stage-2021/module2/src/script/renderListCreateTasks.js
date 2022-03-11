@@ -25,7 +25,8 @@ function buttonCreateTask(event){
             id:id,
             task:form.elements['task'].value,
             date:form.elements['date'].value,
-            completed:0
+            completed:0,
+            deleteMarker:0
         }
         allTasks.push(task)
         localStorage.setItem('tasks',JSON.stringify(allTasks))
@@ -48,11 +49,21 @@ function isValidForm(form){
 }
 //Функция завершения задачи
 function completeTask(idBlock){
-    let block = document.getElementById(`block${idBlock}`)
+    let block = document.getElementById(`${idBlock}`)
     block.style = 'border-left:10px solid green;box-shadow:0 0 20px green;'
-    let idTask = getAllTasks().findIndex(elem => elem.id === Number(idBlock))
+    let idTask = getAllTasks().findIndex(elem => elem.id === Number(idBlock.split('_')[1]))
     let allTasks = getAllTasks()
     allTasks[idTask].completed = 1
+    localStorage.setItem('tasks',JSON.stringify(allTasks))
+}
+// Удаление задачи
+function deleteTask(id){
+    let allTasks = getAllTasks()
+    id = Number(id.split('_')[1])
+    console.log(id)
+    let deleteIndex = allTasks.findIndex(elem => elem.id === id)
+    console.log(allTasks[deleteIndex])
+    allTasks[deleteIndex].deleteMarker = 1
     localStorage.setItem('tasks',JSON.stringify(allTasks))
 }
 //Перекрашивание всех завершенных заданий
@@ -60,15 +71,17 @@ function colorsTaskCompleted(){
     let allTasks = getAllTasks()
     allTasks.forEach((elem,i) => {
         if(elem.completed === 1){
-            document.getElementById(`block${elem.id}`).style = 'border-left:10px solid green;box-shadow:0 0 20px green;'
+            document.getElementById(`block_${elem.id}`).style = 'border-left:10px solid green;box-shadow:0 0 20px green;'
         }
     })
 }
+//
 function colorsTaskOverdue(){
     let allTasks = getAllTasks()
-    allTasks.forEach((elem,i) => {
+    allTasks.forEach(elem => {
+        if(elem.deleteMarker === 1) return
         if(elem.completed === 2){
-            document.getElementById(`block${elem.id}`).style = 'border-left:10px solid red;box-shadow:0 0 20px red;'
+            document.getElementById(`block_${elem.id}`).style = 'border-left:10px solid red;box-shadow:0 0 20px red;'
         }
     })
 }
